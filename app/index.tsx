@@ -1,15 +1,118 @@
-import AlertDialog from "components/Dialog/AlertDialog";
+import { AlarmCheck, Search } from "@tamagui/lucide-icons";
+import { CheckboxWithLabel } from "components/Checkbox/CheckboxWithLabel";
+import CustomDialog from "components/Dialog/CustomDialog";
+import { InputWithLabel } from "components/Input/InputWithLabel";
+import RadioGroupItemWithLabel from "components/RadioGroup/RadiogroupWithLabel";
+import CustomSelect from "components/Select/CustomSelect";
+import { SwitchWithLabel } from "components/Switch/SwitchWithLabel";
+import ToggleGroupComponent from "components/ToggleGroup/ToggleGroupComp";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import {
+  Button,
+  H1,
+  H2,
+  H3,
+  H4,
+  Input,
+  RadioGroup,
+  ScrollView,
+  Text,
+  TextArea,
+  XStack,
+  YStack,
+} from "tamagui";
 
 export default function App() {
   return (
     <View style={styles.container}>
       {/* <ToastViewport /> */}
-
-      <Text>Home</Text>
-
-      <AlertDialog />
+      <ScrollView>
+        <XStack>
+          <YStack mx={30}>
+            <Button bg={"#288dff"} color={"white"} mt={10}>
+              Button
+            </Button>
+            <Button mt={10} variant="outlined" outlineColor="#22a7f2">
+              Button
+            </Button>
+            <Button
+              alignSelf="center"
+              mt={10}
+              icon={AlarmCheck}
+              bg={"#fd5534"}
+              color={"white"}
+            >
+              Icon Before
+            </Button>
+            <Button
+              alignSelf="center"
+              mt={10}
+              iconAfter={Search}
+              bg={"#6650fd"}
+              color={"white"}
+            >
+              Icon After
+            </Button>
+            <CustomDialog
+              description={"Dialog description goes here"}
+              title={"Title"}
+              triggerComponent={
+                <Button bg={"#259745"} color={"white"} mt={10}>
+                  Open Dialog
+                </Button>
+              }
+              positiveActionComponent={
+                <Button bg={"#037cd5"} color={"white"} bordered>
+                  Tap me
+                </Button>
+              }
+            />
+          </YStack>
+          <YStack mx={30}>
+            <H1>H1</H1>
+            <H2>H2</H2>
+            <H3>H3</H3>
+            <H4>H4</H4>
+            <Text fontSize={16}>Text</Text>
+            <Text fontWeight={"bold"} fontSize={16}>
+              Bold Text
+            </Text>
+          </YStack>
+        </XStack>
+        <YStack mt={20}>
+          <Input size="$4" borderWidth={1} placeholder="Input Element" />
+          <TextArea
+            size="$4"
+            borderWidth={2}
+            mt={10}
+            placeholder="454 South Kafrul, Dhaka"
+          />
+          <InputWithLabel label={"Name"} />
+          <CustomSelect />
+          <CheckboxWithLabel size="$3" label="Accept Terms & Conditions" />
+          <RadioGroup
+            aria-labelledby="Select one item"
+            defaultValue="3"
+            name="form"
+          >
+            <YStack width={300} alignItems="center" space="$2">
+              <RadioGroupItemWithLabel
+                size="$3"
+                value="2"
+                label="Radio Group"
+              />
+            </YStack>
+          </RadioGroup>
+          <SwitchWithLabel size="$2" label="Hello" />
+          <ToggleGroupComponent
+            type="single"
+            size="$3"
+            orientation="horizontal"
+            mt={10}
+          />
+        </YStack>
+      </ScrollView>
       <StatusBar style="auto" />
     </View>
   );
