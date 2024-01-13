@@ -5,6 +5,7 @@ import { InputWithLabel } from "components/Input/InputWithLabel";
 import RadioGroupItemWithLabel from "components/RadioGroup/RadiogroupWithLabel";
 import CustomSelect from "components/Select/CustomSelect";
 import { SwitchWithLabel } from "components/Switch/SwitchWithLabel";
+import { ToastDemo } from "components/Toast/CustomToast";
 import ToggleGroupComponent from "components/ToggleGroup/ToggleGroupComp";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
@@ -111,6 +112,7 @@ export default function App() {
             orientation="horizontal"
             mt={10}
           />
+          <ToastDemo />
         </YStack>
       </ScrollView>
       <StatusBar style="auto" />
