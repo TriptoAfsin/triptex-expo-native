@@ -8,7 +8,7 @@ import { SwitchWithLabel } from "components/Switch/SwitchWithLabel";
 import { ToastDemo } from "components/Toast/CustomToast";
 import ToggleGroupComponent from "components/ToggleGroup/ToggleGroupComp";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, useColorScheme } from "react-native";
 import {
   Button,
   H1,
@@ -25,6 +25,16 @@ import {
 } from "tamagui";
 
 export default function App() {
+  let colorScheme = useColorScheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colorScheme === "dark" ? "#23272e" : "#ffff",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  });
   return (
     <View style={styles.container}>
       {/* <ToastViewport /> */}
@@ -119,12 +129,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -9,6 +9,7 @@ import { TamaguiProvider, XStack, createTamagui } from "tamagui";
 import { config } from "@tamagui/config/v2";
 import { ToastProvider } from "@tamagui/toast";
 import { useEffect } from "react";
+import { useColorScheme } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,6 +25,8 @@ export default function RootLayoutNav() {
   const [fontsLoaded, fontError] = useFonts({
     Inter_500Medium,
   });
+  let colorScheme = useColorScheme();
+  console.log("colorScheme", colorScheme);
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
@@ -39,51 +42,62 @@ export default function RootLayoutNav() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TamaguiProvider config={tamaguiConfig}>
+      <TamaguiProvider
+        config={tamaguiConfig}
+        defaultTheme={colorScheme === "dark" ? "dark" : "light"}
+      >
         <ToastProvider>
-          <Drawer>
-            <Drawer.Screen
-              name="index" // This is the name of the page and must match the url from root
-              options={{
-                drawerLabel: "Home",
-                title: "Home",
-                headerRight: () => (
-                  <XStack mx={10}>
-                    <Search />
-                  </XStack>
-                ),
+          <>
+            <Drawer
+              screenOptions={{
+                headerStyle: {
+                  backgroundColor: colorScheme === "dark" ? "#1e2227" : "#fff",
+                },
+                headerTintColor: colorScheme === "dark" ? "#fff" : "#1e2227",
               }}
-            />
-            <Drawer.Screen
-              name="gallery" // This is the name of the page and must match the url from root
-              options={{
-                drawerLabel: "Gallery",
-                title: "Gallery",
-              }}
-            />
-            <Drawer.Screen
-              name="about" // This is the name of the page and must match the url from root
-              options={{
-                drawerLabel: "About",
-                title: "About",
-              }}
-            />
-            <Drawer.Screen
-              name="list" // This is the name of the page and must match the url from root
-              options={{
-                drawerLabel: "List",
-                title: "List",
-              }}
-            />
-            {/* <Drawer.Screen
+            >
+              <Drawer.Screen
+                name="index" // This is the name of the page and must match the url from root
+                options={{
+                  drawerLabel: "Home",
+                  title: "Home",
+                  headerRight: () => (
+                    <XStack mx={10}>
+                      <Search />
+                    </XStack>
+                  ),
+                }}
+              />
+              <Drawer.Screen
+                name="gallery" // This is the name of the page and must match the url from root
+                options={{
+                  drawerLabel: "Gallery",
+                  title: "Gallery",
+                }}
+              />
+              <Drawer.Screen
+                name="about" // This is the name of the page and must match the url from root
+                options={{
+                  drawerLabel: "About",
+                  title: "About",
+                }}
+              />
+              <Drawer.Screen
+                name="list" // This is the name of the page and must match the url from root
+                options={{
+                  drawerLabel: "List",
+                  title: "List",
+                }}
+              />
+              {/* <Drawer.Screen
             name="user/[id]" 
             options={{
               drawerLabel: "User",
               title: "overview",
             }}
           /> */}
-          </Drawer>
-          {/* <Stack
+            </Drawer>
+            {/* <Stack
         screenOptions={{
           headerStyle: {
             backgroundColor: "#f4511e",
@@ -98,6 +112,7 @@ export default function RootLayoutNav() {
         <Stack.Screen name="gallery" options={{ title: "Gallery" }} />
         <Stack.Screen name="about" options={{ title: "About" }} />
       </Stack> */}
+          </>
         </ToastProvider>
       </TamaguiProvider>
     </QueryClientProvider>
