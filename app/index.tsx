@@ -42,10 +42,10 @@ export default function App() {
         <XStack>
           <YStack mx={30}>
             <Button bg={"#288dff"} color={"white"} mt={10}>
-              Button
+              <Text>Button</Text>
             </Button>
             <Button mt={10} variant="outlined" outlineColor="#22a7f2">
-              Button
+              <Text> Button</Text>
             </Button>
             <Button
               alignSelf="center"
@@ -54,7 +54,7 @@ export default function App() {
               bg={"#fd5534"}
               color={"white"}
             >
-              Icon Before
+              <Text color={"white"}>Icon Before</Text>
             </Button>
             <Button
               alignSelf="center"
@@ -63,14 +63,14 @@ export default function App() {
               bg={"#6650fd"}
               color={"white"}
             >
-              Icon After
+              <Text color={"white"}>Icon After</Text>
             </Button>
             <CustomDialog
               description={"Dialog description goes here"}
               title={"Title"}
               triggerComponent={
                 <Button bg={"#259745"} color={"white"} mt={10}>
-                  Open Dialog
+                  <Text>Open Dialog</Text>
                 </Button>
               }
               positiveActionComponent={

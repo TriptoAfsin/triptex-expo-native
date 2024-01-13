@@ -40,6 +40,8 @@ export default function RootLayoutNav() {
     return null;
   }
 
+  console.log("📌 colorScheme", colorScheme);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TamaguiProvider
