@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, useColorScheme } from "react-native";
-import { Text } from "tamagui";
+import { StyleSheet, Text, View, useColorScheme } from "react-native";
 
 export default function List() {
   let colorScheme = useColorScheme();

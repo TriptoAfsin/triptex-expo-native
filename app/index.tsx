@@ -1,7 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import DummyComponents from "pages/DummyComponents";
-import { StyleSheet, View, useColorScheme } from "react-native";
-import { ScrollView } from "tamagui";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useColorScheme,
+} from "react-native";
 
 export default function App() {
   let colorScheme = useColorScheme();
@@ -18,9 +21,8 @@ export default function App() {
     <View style={styles.container}>
       {/* <ToastViewport /> */}
       <ScrollView>
-        <DummyComponents />
+        <Text>Home Page</Text>
       </ScrollView>
-      <StatusBar style="auto" />
     </View>
   );
 }
